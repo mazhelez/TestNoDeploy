@@ -351,6 +351,7 @@ jobs:
           getSecrets: '${{ steps.envName.outputs.envName }}-AuthContext,${{ steps.envName.outputs.envName }}_AuthContext,AuthContext'
 
       - name: Deploy to Business Central
+        if: hashFiles('.artifacts/**/*.app') != ''
         id: Deploy
         uses: microsoft/AL-Go-Actions/Deploy@v8.2
         env:
